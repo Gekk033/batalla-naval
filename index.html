@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Batalla Naval</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Pantalla de inicio -->
+    <screen id="screen-start" class="screen active">
+      <div class="title-block">
+        <div class="title-deco">⚓</div>
+        <h1>BATALLA<br/><span>NAVAL</span></h1>
+        <p class="subtitle">Hunde la flota enemiga antes de que hundan la tuya</p>
+      </div>
+      <button class="btn-primary" id="btn-start">INICIAR BATALLA</button>
+      <div class="instructions">
+        <h3>¿Cómo jugar?</h3>
+        <ul>
+          <li>Coloca tus 5 barcos en el tablero</li>
+          <li>Haz clic derecho para rotar un barco</li>
+          <li>Ataca el tablero enemigo para hundir su flota</li>
+          <li>¡El primero en hundir todos los barcos gana!</li>
+        </ul>
+      </div>
+    </screen>
+
+    <!-- Pantalla de colocación -->
+    <screen id="screen-place" class="screen">
+      <header>
+        <h2>COLOCA TUS BARCOS</h2>
+        <div class="ship-legend" id="ship-legend"></div>
+      </header>
+      <div class="placement-area">
+        <div class="board-wrapper">
+          <div class="board-label">TU FLOTA</div>
+          <div class="board" id="player-board"></div>
+        </div>
+        <div class="sidebar">
+          <div class="ships-panel">
+            <h3>Barcos disponibles</h3>
+            <div id="ships-to-place"></div>
+          </div>
+          <div class="placement-controls">
+            <button class="btn-secondary" id="btn-rotate">🔄 ROTAR</button>
+            <button class="btn-secondary" id="btn-random">🎲 ALEATORIO</button>
+            <button class="btn-primary" id="btn-ready" disabled>⚔️ ¡LISTO!</button>
+          </div>
+        </div>
+      </div>
+    </screen>
+
+    <!-- Pantalla de juego -->
+    <screen id="screen-game" class="screen">
+      <header class="game-header">
+        <div class="score-display">
+          <span id="player-hits">0</span>
+          <span class="score-label">IMPACTOS</span>
+        </div>
+        <div class="turn-indicator" id="turn-indicator">TU TURNO</div>
+        <div class="score-display">
+          <span id="enemy-hits">0</span>
+          <span class="score-label">RECIBIDOS</span>
+        </div>
+      </header>
+
+      <div class="game-area">
+        <div class="board-section enemy-section">
+          <div class="board-label enemy-label">FLOTA ENEMIGA</div>
+          <div class="board" id="enemy-board"></div>
+          <div class="board-status" id="enemy-status">Elige un objetivo</div>
+        </div>
+
+        <div class="board-section player-section">
+          <div class="board-label">TU FLOTA</div>
+          <div class="board" id="player-game-board"></div>
+          <div class="board-status" id="player-status">Esperando...</div>
+        </div>
+      </div>
+
+      <div class="log-panel">
+        <div id="message-log"></div>
+      </div>
+    </screen>
+
+    <!-- Pantalla de resultado -->
+    <screen id="screen-result" class="screen">
+      <div class="result-block">
+        <div class="result-icon" id="result-icon"></div>
+        <h2 id="result-title"></h2>
+        <p id="result-message"></p>
+        <div class="result-stats" id="result-stats"></div>
+        <button class="btn-primary" id="btn-restart">JUGAR DE NUEVO</button>
+      </div>
+    </screen>
+  </div>
+
+  <div id="tooltip" class="tooltip hidden"></div>
+  <script src="game.js"></script>
+</body>
+</html>
